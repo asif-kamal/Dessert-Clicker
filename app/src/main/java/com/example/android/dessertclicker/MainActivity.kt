@@ -29,6 +29,9 @@ import com.example.android.dessertclicker.databinding.ActivityMainBinding
 
 
 const val TAG = "MainActivity"
+const val KEY_REVENUE = "revenue_key"
+const val KEY_DESSERT_SOLD = "dessert_sold_key"
+
 class MainActivity : AppCompatActivity() {
 
     private var revenue = 0
@@ -112,6 +115,12 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onRestart called")
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d(TAG, "onSaveInstanceState called")
+        outState.putInt(KEY_REVENUE, revenue)
+        outState.putInt(KEY_DESSERT_SOLD, dessertsSold)
+    }
     /**
      * Updates the score when the dessert is clicked. Possibly shows a new dessert.
      */
